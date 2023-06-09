@@ -4,6 +4,9 @@ on:
     branches: [ main, master ]
   pull_request:
     branches: [ main, master ]
+env:
+  HMPPS_AUTH_USERNAME: ${{ secrets.HMPPS_AUTH_USERNAME }}
+  HMPPS_AUTH_PASSWORD: ${{ secrets.HMPPS_AUTH_PASSWORD }}
 jobs:
   test:
     timeout-minutes: 60
