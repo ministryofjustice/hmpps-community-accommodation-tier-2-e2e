@@ -3,7 +3,11 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "test": "npx playwright test",
+    "test:ui": "npx playwright test --ui",
+    "install-playwright": "npx playwright install"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ministryofjustice/hmpps-community-accommodation-tier-2-e2e.git"
