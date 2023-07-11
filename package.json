@@ -4,8 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "npx playwright test",
-    "test:ui": "npx playwright test --ui",
+    "lint": "eslint . --cache --max-warnings 0 ",
+    "lint:fix": "eslint . --cache --max-warnings 0 --fix",
+    "test": "npx playwright test --project=setupDev --project=dev",
+    "test:ui": "npm run test -- --ui",
+    "test:local": "npx playwright test --project=setupLocal --project=local",
+    "test:local:ui": "npm run test:local -- --ui",
     "install-playwright": "npx playwright install"
   },
   "repository": {
