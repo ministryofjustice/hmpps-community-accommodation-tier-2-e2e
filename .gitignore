@@ -1,6 +1,7 @@
 node_modules/
 /test-results/
+/playwright
 /playwright-report/
 /playwright/.cache/
-/playwright/.auth/
 /.env
+/.DS_Store
