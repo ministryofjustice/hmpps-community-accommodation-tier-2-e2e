@@ -17,11 +17,14 @@ export const enterCrn = async (dashboard: DashboardPage, page: Page, crn: string
   await crnPage.clickSave()
 }
 
-export const completeFundingInformationTask = async (page: Page) => {
+export const completeFundingInformationTask = async (page: Page, name: string) => {
   const taskListPage = new TaskListPage(page)
-  await taskListPage.clickTask('Funding information')
+  await taskListPage.clickTask('Add funding information')
 
-  const fundingInformationPage = await ApplyPage.initialize(page, 'Funding information')
+  const fundingInformationPage = await ApplyPage.initialize(
+    page,
+    `How will ${name} pay for their accommodation and service charge?`,
+  )
   await fundingInformationPage.checkRadio('Personal money or savings')
   await fundingInformationPage.clickSave()
 }
