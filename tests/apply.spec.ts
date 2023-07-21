@@ -6,5 +6,5 @@ test('create a CAS-2 application with funding information', async ({ page, perso
 
   await enterCrn(dashboard, page, person.crn)
 
-  await completeFundingInformationTask(page)
+  await completeFundingInformationTask(page, person.name)
 })
