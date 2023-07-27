@@ -1,17 +1,24 @@
 import { Page } from '@playwright/test'
-import { DashboardPage } from '../pages/dashboardPage'
-import { ApplyPage, CRNPage, TaskListPage } from '../pages/apply'
+import { ApplicationsDashboardPage, ApplyPage, CRNPage, StartPage, TaskListPage } from '../pages/apply'
 
-export const visitDashboard = async (page: Page): Promise<DashboardPage> => {
-  const dashboard = new DashboardPage(page)
-  await dashboard.goto()
+export const startAnApplication = async (page: Page) => {
+  // Start page
+  // --------
+  // visit the root url
+  const startPage = new StartPage(page)
+  await startPage.goto()
 
-  return dashboard
+  // // confirm that I'm ready to start
+  await startPage.startNow()
+
+  // Applications dashboard
+  // -----------------
+  // Follow link to 'Start a new application'
+  const applicationsDashboard = new ApplicationsDashboardPage(page)
+  await applicationsDashboard.startNewApplication()
 }
 
-export const enterCrn = async (dashboard: DashboardPage, page: Page, crn: string) => {
-  await dashboard.clickStartApplication()
-
+export const enterCrn = async (page: Page, crn: string) => {
   const crnPage = new CRNPage(page)
   await crnPage.enterCrn(crn)
   await crnPage.clickSave()

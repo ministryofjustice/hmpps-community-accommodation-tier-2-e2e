@@ -1,10 +1,10 @@
 import { test } from '../test'
-import { completeFundingInformationTask, enterCrn, visitDashboard } from '../steps/apply'
+import { completeFundingInformationTask, enterCrn, startAnApplication } from '../steps/apply'
 
 test('create a CAS-2 application with funding information', async ({ page, person }) => {
-  const dashboard = await visitDashboard(page)
+  await startAnApplication(page)
 
-  await enterCrn(dashboard, page, person.crn)
+  await enterCrn(page, person.crn)
 
   await completeFundingInformationTask(page, person.name)
 })

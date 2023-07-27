@@ -1,11 +1,11 @@
-import { BasePage } from './basePage'
+import { BasePage } from '../basePage'
 
-export class DashboardPage extends BasePage {
+export class StartPage extends BasePage {
   async goto() {
     await this.page.goto('/')
   }
 
-  async clickStartApplication() {
+  async startNow() {
     await this.page.getByRole('button', { name: 'Start now' }).click()
   }
 }
