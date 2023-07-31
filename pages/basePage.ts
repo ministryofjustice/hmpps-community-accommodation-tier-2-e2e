@@ -1,7 +1,9 @@
 import { Page } from '@playwright/test'
 
 export class BasePage {
-  constructor(public readonly page: Page) {}
+  constructor(public readonly page: Page) {
+    // noop
+  }
 
   async clickSave() {
     await this.page.getByRole('button', { name: 'Save and continue' }).click()
