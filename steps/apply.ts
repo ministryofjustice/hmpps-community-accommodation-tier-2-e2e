@@ -24,7 +24,11 @@ export const enterCrn = async (page: Page, crn: string) => {
   await crnPage.clickSave()
 }
 
-export const completeFundingInformationTask = async (page: Page, name: string) => {
+export const completeAreaAndFundingSection = async (page: Page, name: string) => {
+  await completeFundingInformationTask(page, name)
+}
+
+const completeFundingInformationTask = async (page: Page, name: string) => {
   const taskListPage = new TaskListPage(page)
   await taskListPage.clickTask('Add funding information')
 
