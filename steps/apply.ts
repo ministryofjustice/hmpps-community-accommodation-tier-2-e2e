@@ -1,5 +1,7 @@
 import { Page } from '@playwright/test'
-import { ApplicationsDashboardPage, ApplyPage, CRNPage, StartPage, TaskListPage } from '../pages/apply'
+import { ApplicationsDashboardPage, CRNPage, StartPage } from '../pages/apply'
+import { completeWillAnswerEqualityQuestionsTask } from './aboutThePersonSection'
+import { completeFundingInformationTask } from './areaAndFundingSection'
 
 export const startAnApplication = async (page: Page) => {
   // Start page
@@ -24,14 +26,10 @@ export const enterCrn = async (page: Page, crn: string) => {
   await crnPage.clickSave()
 }
 
-export const completeFundingInformationTask = async (page: Page, name: string) => {
-  const taskListPage = new TaskListPage(page)
-  await taskListPage.clickTask('Add funding information')
+export const completeAreaAndFundingSection = async (page: Page, name: string) => {
+  await completeFundingInformationTask(page, name)
+}
 
-  const fundingInformationPage = await ApplyPage.initialize(
-    page,
-    `How will ${name} pay for their accommodation and service charge?`,
-  )
-  await fundingInformationPage.checkRadio('Personal money or savings')
-  await fundingInformationPage.clickSave()
+export const completeAboutThePersonSection = async (page: Page, name: string) => {
+  await completeWillAnswerEqualityQuestionsTask(page, name)
 }
