@@ -1,10 +1,23 @@
 import { Page } from '@playwright/test'
 import { ApplyPage, TaskListPage } from '../pages/apply'
 
-export const completeWillAnswerEqualityQuestionsTask = async (page: Page, name: string) => {
+export const completeEqualityAndDiversityTask = async (page: Page, name: string) => {
   const taskListPage = new TaskListPage(page)
   await taskListPage.clickTask('Complete equality and diversity monitoring')
 
+  await completeWillAnswerQuestionsPage(page, name)
+
+  await completeDisabilityPage(page, name)
+}
+
+async function completeDisabilityPage(page: Page, name: string) {
+  const disabilityPage = await ApplyPage.initialize(page, `Does ${name} have a disability?`)
+
+  await disabilityPage.checkRadio('No')
+  await disabilityPage.clickSave()
+}
+
+async function completeWillAnswerQuestionsPage(page: Page, name: string) {
   const willAnswerEqualityQuestionsPage = await ApplyPage.initialize(
     page,
     `Does ${name} want to answer the equality questions?`,
