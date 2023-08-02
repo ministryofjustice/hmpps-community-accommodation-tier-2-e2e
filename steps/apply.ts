@@ -1,6 +1,6 @@
 import { Page } from '@playwright/test'
 import { ApplicationsDashboardPage, CRNPage, StartPage } from '../pages/apply'
-import { completeWillAnswerEqualityQuestionsTask } from './aboutThePersonSection'
+import { completeEqualityAndDiversityTask } from './aboutThePersonSection'
 import { completeFundingInformationTask } from './areaAndFundingSection'
 
 export const startAnApplication = async (page: Page) => {
@@ -31,5 +31,5 @@ export const completeAreaAndFundingSection = async (page: Page, name: string) =>
 }
 
 export const completeAboutThePersonSection = async (page: Page, name: string) => {
-  await completeWillAnswerEqualityQuestionsTask(page, name)
+  await completeEqualityAndDiversityTask(page, name)
 }
