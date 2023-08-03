@@ -13,7 +13,7 @@ export const completeEqualityAndDiversityTask = async (page: Page, name: string)
 async function completeDisabilityPage(page: Page, name: string) {
   const disabilityPage = await ApplyPage.initialize(page, `Does ${name} have a disability?`)
 
-  await disabilityPage.checkRadio('No')
+  await disabilityPage.checkRadio('No', true)
   await disabilityPage.clickSave()
 }
 
