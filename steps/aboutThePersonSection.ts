@@ -22,6 +22,6 @@ async function completeWillAnswerQuestionsPage(page: Page, name: string) {
     page,
     `Does ${name} want to answer the equality questions?`,
   )
-  await willAnswerEqualityQuestionsPage.checkRadio('Yes, answer the equality questions (takes 2 minutes)')
+  await willAnswerEqualityQuestionsPage.checkRadio('Yes')
   await willAnswerEqualityQuestionsPage.clickSave()
 }
