@@ -10,6 +10,17 @@ export const completeEqualityAndDiversityTask = async (page: Page, name: string)
   await completeDisabilityPage(page, name)
 
   await completeSexAndGenderPage(page)
+
+  await completeSexualOrientationPage(page, name)
+}
+
+async function completeSexualOrientationPage(page: Page, name) {
+  const sexualOrientationPage = await ApplyPage.initialize(
+    page,
+    `Which of the following best describes ${name}'s sexual orientation?`,
+  )
+  await sexualOrientationPage.checkRadio('Gay', true)
+  await sexualOrientationPage.clickSave()
 }
 
 async function completeSexAndGenderPage(page: Page) {
