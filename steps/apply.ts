@@ -1,5 +1,6 @@
 import { Page } from '@playwright/test'
 import { ApplicationsDashboardPage, CRNPage, StartPage } from '../pages/apply'
+import { completeEligibilityTask } from './beforeYouStartSection'
 import { completeEqualityAndDiversityTask } from './aboutThePersonSection'
 import { completeFundingInformationTask } from './areaAndFundingSection'
 
@@ -24,6 +25,10 @@ export const enterCrn = async (page: Page, crn: string) => {
   const crnPage = new CRNPage(page)
   await crnPage.enterCrn(crn)
   await crnPage.clickSave()
+}
+
+export const completeBeforeYouStartSection = async (page: Page, name: string) => {
+  await completeEligibilityTask(page, name)
 }
 
 export const completeAreaAndFundingSection = async (page: Page, name: string) => {
