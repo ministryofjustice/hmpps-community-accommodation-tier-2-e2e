@@ -9,6 +9,6 @@ export const completeFundingInformationTask = async (page: Page, name: string) =
     page,
     `How will ${name} pay for their accommodation and service charge?`,
   )
-  await fundingInformationPage.checkRadio('Personal money or savings')
+  await fundingInformationPage.checkRadio('Personal money')
   await fundingInformationPage.clickSave()
 }
