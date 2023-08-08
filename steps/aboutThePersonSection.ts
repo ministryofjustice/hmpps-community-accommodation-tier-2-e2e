@@ -16,6 +16,14 @@ export const completeEqualityAndDiversityTask = async (page: Page, name: string)
   await completeEthnicGroupPage(page, name)
 
   await completeWhiteBackgroundPage(page, name)
+
+  await completeReligionPage(page, name)
+}
+
+async function completeReligionPage(page: Page, name) {
+  const sexualOrientationPage = await ApplyPage.initialize(page, `What is ${name}'s religion?`)
+  await sexualOrientationPage.checkRadio('Agnostic', true)
+  await sexualOrientationPage.clickSave()
 }
 
 async function completeWhiteBackgroundPage(page: Page, name) {
