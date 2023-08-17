@@ -21,24 +21,24 @@ export const completeEqualityAndDiversityTask = async (page: Page, name: string)
 }
 
 async function completeReligionPage(page: Page, name) {
-  const sexualOrientationPage = await ApplyPage.initialize(page, `What is ${name}'s religion?`)
-  await sexualOrientationPage.checkRadio('Agnostic', true)
-  await sexualOrientationPage.clickSave()
+  const religionPage = await ApplyPage.initialize(page, `What is ${name}'s religion?`)
+  await religionPage.checkRadio('Agnostic', true)
+  await religionPage.clickSave()
 }
 
 async function completeWhiteBackgroundPage(page: Page, name) {
-  const sexualOrientationPage = await ApplyPage.initialize(
+  const whiteBackgroundPage = await ApplyPage.initialize(
     page,
     `Which of the following best describes ${name}'s White background?`,
   )
-  await sexualOrientationPage.checkRadio('Irish', true)
-  await sexualOrientationPage.clickSave()
+  await whiteBackgroundPage.checkRadio('Irish', true)
+  await whiteBackgroundPage.clickSave()
 }
 
 async function completeEthnicGroupPage(page: Page, name) {
-  const sexualOrientationPage = await ApplyPage.initialize(page, `What is ${name}'s ethnic group?`)
-  await sexualOrientationPage.checkRadio('White', true)
-  await sexualOrientationPage.clickSave()
+  const ethnicGroupPage = await ApplyPage.initialize(page, `What is ${name}'s ethnic group?`)
+  await ethnicGroupPage.checkRadio('White', true)
+  await ethnicGroupPage.clickSave()
 }
 
 async function completeSexualOrientationPage(page: Page, name) {
