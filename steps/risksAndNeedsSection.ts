@@ -101,3 +101,52 @@ async function completeOtherHealthPage(page: Page, name) {
 
   await otherHealthPage.clickSave()
 }
+
+export const completeRiskToSelfTask = async (page: Page, name: string) => {
+  const taskListPage = new TaskListPage(page)
+  await taskListPage.clickTask('Review risk to self information')
+
+  await reviewOasysImportPage(page, name)
+  await completeVulnerabilityPage(page, name)
+  await completeCurrentRisksPage(page, name)
+  await completeHistoricalRisksPage(page, name)
+  await completeAcctPage(page)
+  await completeAdditionalInformationPage(page)
+}
+
+async function reviewOasysImportPage(page: Page, name) {
+  const guidancePage = await ApplyPage.initialize(page, `Import ${name}'s risk to self data from OASys`)
+  await guidancePage.clickContinue()
+}
+
+async function completeVulnerabilityPage(page, name) {
+  const vulnerabilityPage = await ApplyPage.initialize(page, `${name}'s vulnerability`)
+
+  await vulnerabilityPage.checkCheckboxes(['I confirm this information is relevant and up to date.'])
+  await vulnerabilityPage.clickContinue()
+}
+
+async function completeCurrentRisksPage(page, name) {
+  const currentRisksPage = await ApplyPage.initialize(page, `${name}'s current risks`)
+
+  await currentRisksPage.checkCheckboxes(['I confirm this information is relevant and up to date.'])
+  await currentRisksPage.clickContinue()
+}
+
+async function completeHistoricalRisksPage(page, name) {
+  const historicalRisksPage = await ApplyPage.initialize(page, `${name}'s historical risks`)
+
+  await historicalRisksPage.checkCheckboxes(['I confirm this information is relevant and up to date.'])
+  await historicalRisksPage.clickContinue()
+}
+
+async function completeAcctPage(page) {
+  const acctsPage = await ApplyPage.initialize(page, undefined)
+  await acctsPage.clickSave()
+}
+
+async function completeAdditionalInformationPage(page) {
+  const additionalInformationPage = await ApplyPage.initialize(page, 'Additional Information')
+  await additionalInformationPage.checkRadio('No')
+  await additionalInformationPage.clickSave()
+}
