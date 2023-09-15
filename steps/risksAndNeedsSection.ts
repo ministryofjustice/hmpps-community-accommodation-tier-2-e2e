@@ -110,7 +110,7 @@ export const completeRiskToSelfTask = async (page: Page, name: string) => {
   await completeVulnerabilityPage(page, name)
   await completeCurrentRisksPage(page, name)
   await completeHistoricalRisksPage(page, name)
-  await completeAcctPage(page)
+  await addAnAcct(page)
   await completeAdditionalInformationPage(page)
 }
 
@@ -140,9 +140,20 @@ async function completeHistoricalRisksPage(page, name) {
   await historicalRisksPage.clickContinue()
 }
 
-async function completeAcctPage(page) {
+async function addAnAcct(page) {
   const acctsPage = await ApplyPage.initialize(page, undefined)
+  await acctsPage.clickButton('Add an Acct note')
+  await completeAcctDataPage(page)
   await acctsPage.clickSave()
+}
+
+async function completeAcctDataPage(page) {
+  const acctDataPage = await ApplyPage.initialize(page, 'Add an ACCT entry')
+  await acctDataPage.fillDateFieldInGroup('When was the ACCT created?', { year: '2022', month: '3', day: '1' })
+  await acctDataPage.checkRadio('Yes')
+  await acctDataPage.fillField('Referring institution', 'HMPPS Sheffield')
+  await acctDataPage.fillField('Details about the ACCT', 'some details')
+  await acctDataPage.clickButton('Save and add ACCT')
 }
 
 async function completeAdditionalInformationPage(page) {

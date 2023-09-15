@@ -51,4 +51,10 @@ export class BasePage {
     await this.page.getByLabel('Month', { exact: true }).fill(month)
     await this.page.getByLabel('Year', { exact: true }).fill(year)
   }
+
+  async fillDateFieldInGroup(group: string, date: { day: string; month: string; year: string }) {
+    await this.page.getByRole('group', { name: group }).getByLabel('Day').fill(date.day)
+    await this.page.getByRole('group', { name: group }).getByLabel('Month').fill(date.month)
+    await this.page.getByRole('group', { name: group }).getByLabel('Year').fill(date.year)
+  }
 }
