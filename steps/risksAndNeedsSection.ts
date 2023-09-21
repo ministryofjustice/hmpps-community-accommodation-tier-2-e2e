@@ -150,3 +150,66 @@ async function completeAdditionalInformationPage(page) {
   await additionalInformationPage.checkRadio('No')
   await additionalInformationPage.clickSave()
 }
+
+export const completeRoshTask = async (page: Page, name: string) => {
+  const taskListPage = new TaskListPage(page)
+  await taskListPage.clickTask('Review risk of serious harm (RoSH) information')
+
+  await reviewRoshOasysImportPage(page, name)
+  await completeRoshSummaryPage(page, name)
+  await completeRiskToOthersPage(page)
+  await completeRiskFactorsPage(page)
+  await completeReducingRiskPage(page)
+  await completeRiskManagementArrangementsPage(page, name)
+  await completeCellShareInformationPage(page, name)
+  await completeBehaviourNotesPage(page)
+  await completeAdditionalRiskPage(page, name)
+}
+
+async function reviewRoshOasysImportPage(page: Page, name) {
+  const guidancePage = await ApplyPage.initialize(page, `Import ${name}'s risk of serious harm (RoSH) data from OASys`)
+  await guidancePage.clickContinue()
+}
+
+async function completeRoshSummaryPage(page, name) {
+  const summaryPage = await ApplyPage.initialize(page, `Risk of serious harm (RoSH) summary for ${name}`)
+  await summaryPage.clickSave()
+}
+
+async function completeRiskToOthersPage(page) {
+  const taskListPage = new TaskListPage(page)
+  await taskListPage.clickSave()
+}
+
+async function completeRiskFactorsPage(page) {
+  const taskListPage = new TaskListPage(page)
+  await taskListPage.clickSave()
+}
+
+async function completeReducingRiskPage(page) {
+  const taskListPage = new TaskListPage(page)
+  await taskListPage.clickSave()
+}
+
+async function completeRiskManagementArrangementsPage(page, name) {
+  const riskManagementPage = await ApplyPage.initialize(page, `Risk management arrangements for ${name}`)
+  await riskManagementPage.checkCheckboxes(['No, this person does not have risk management arrangements'])
+  await riskManagementPage.clickSave()
+}
+
+async function completeCellShareInformationPage(page, name) {
+  const riskManagementPage = await ApplyPage.initialize(page, `Cell share information for ${name}`)
+  await riskManagementPage.checkRadio('No')
+  await riskManagementPage.clickSave()
+}
+
+async function completeBehaviourNotesPage(page) {
+  const taskListPage = new TaskListPage(page)
+  await taskListPage.clickSave()
+}
+
+async function completeAdditionalRiskPage(page, name) {
+  const riskManagementPage = await ApplyPage.initialize(page, `Additional risk information for ${name}`)
+  await riskManagementPage.checkRadio('No')
+  await riskManagementPage.clickSave()
+}
