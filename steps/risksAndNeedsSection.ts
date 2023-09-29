@@ -122,6 +122,10 @@ async function reviewOasysImportPage(page: Page, name) {
 async function completeVulnerabilityPage(page, name) {
   const vulnerabilityPage = await ApplyPage.initialize(page, `${name}'s vulnerability`)
 
+  await vulnerabilityPage.fillField(
+    `Describe ${name}'s current circumstances, issues and needs related to vulnerability`,
+    'some vulnerability',
+  )
   await vulnerabilityPage.checkCheckboxes(['I confirm this information is relevant and up to date.'])
   await vulnerabilityPage.clickContinue()
 }
@@ -129,6 +133,10 @@ async function completeVulnerabilityPage(page, name) {
 async function completeCurrentRisksPage(page, name) {
   const currentRisksPage = await ApplyPage.initialize(page, `${name}'s current risks`)
 
+  await currentRisksPage.fillField(
+    `Describe ${name}'s current issues and needs related to self harm and suicide`,
+    'some needs',
+  )
   await currentRisksPage.checkCheckboxes(['I confirm this information is relevant and up to date.'])
   await currentRisksPage.clickContinue()
 }
@@ -178,16 +186,19 @@ async function completeRoshSummaryPage(page, name) {
 
 async function completeRiskToOthersPage(page) {
   const taskListPage = new TaskListPage(page)
+  await taskListPage.checkCheckboxes(['I confirm this information is relevant and up to date.'])
   await taskListPage.clickSave()
 }
 
 async function completeRiskFactorsPage(page) {
   const taskListPage = new TaskListPage(page)
+  await taskListPage.checkCheckboxes(['I confirm this information is relevant and up to date.'])
   await taskListPage.clickSave()
 }
 
 async function completeReducingRiskPage(page) {
   const taskListPage = new TaskListPage(page)
+  await taskListPage.checkCheckboxes(['I confirm this information is relevant and up to date.'])
   await taskListPage.clickSave()
 }
 
