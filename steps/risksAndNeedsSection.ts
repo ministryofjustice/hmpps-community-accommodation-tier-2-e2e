@@ -1,4 +1,4 @@
-import { Page } from '@playwright/test'
+import { Page, expect } from '@playwright/test'
 import { ApplyPage, TaskListPage } from '../pages/apply'
 
 export const completeHealthNeedsTask = async (page: Page, name: string) => {
@@ -177,6 +177,7 @@ export const completeRoshTask = async (page: Page, name: string) => {
 
   await reviewRoshOasysImportPage(page, name)
   await completeRoshSummaryPage(page, name)
+  await returnToRoshSummaryPage(page)
   await completeRiskToOthersPage(page)
   await completeRiskFactorsPage(page)
   await completeReducingRiskPage(page)
@@ -194,6 +195,13 @@ async function reviewRoshOasysImportPage(page: Page, name) {
 async function completeRoshSummaryPage(page, name) {
   const summaryPage = await ApplyPage.initialize(page, `Risk of serious harm (RoSH) summary for ${name}`)
   await summaryPage.clickSave()
+}
+
+async function returnToRoshSummaryPage(page) {
+  const riskToOthersPage = new TaskListPage(page)
+  await riskToOthersPage.clickLink('View RoSH summary')
+  await expect(page.getByText('HIGH RoSH')).toBeVisible()
+  riskToOthersPage.clickSave()
 }
 
 async function completeRiskToOthersPage(page) {
