@@ -36,9 +36,9 @@ export default defineConfig<TestOptions>({
       use: {
         baseURL: 'http://localhost:3000',
         user: {
-          name: 'JIM SNOW',
-          username: 'jimsnowldap',
-          password: 'secret',
+          name: 'Pom User',
+          username: 'POM_USER',
+          password: 'password123456',
         },
       },
     },
