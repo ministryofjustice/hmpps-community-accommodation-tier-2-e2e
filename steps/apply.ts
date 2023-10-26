@@ -2,7 +2,12 @@ import { Page } from '@playwright/test'
 import { ApplicationsDashboardPage, CRNPage, StartPage } from '../pages/apply'
 import { completeEligibilityTask } from './beforeYouStartSection'
 import { completeEqualityAndDiversityTask } from './aboutThePersonSection'
-import { completeHealthNeedsTask, completeRiskToSelfTask, completeRoshTask } from './risksAndNeedsSection'
+import {
+  completeHealthNeedsTask,
+  completeOffenceHistoryTask,
+  completeRiskToSelfTask,
+  completeRoshTask,
+} from './risksAndNeedsSection'
 import { completeFundingInformationTask } from './areaAndFundingSection'
 
 export const startAnApplication = async (page: Page) => {
@@ -44,4 +49,8 @@ export const completeRisksAndNeedsSection = async (page: Page, name: string) => 
   await completeHealthNeedsTask(page, name)
   await completeRiskToSelfTask(page, name)
   await completeRoshTask(page, name)
+}
+
+export const completeOffenceAndLicenceInformationSection = async (page: Page, name: string) => {
+  await completeOffenceHistoryTask(page, name)
 }

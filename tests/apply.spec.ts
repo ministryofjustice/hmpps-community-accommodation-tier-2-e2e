@@ -4,6 +4,7 @@ import {
   completeAboutThePersonSection,
   completeAreaAndFundingSection,
   completeBeforeYouStartSection,
+  completeOffenceAndLicenceInformationSection,
   completeRisksAndNeedsSection,
   enterCrn,
   startAnApplication,
@@ -16,5 +17,6 @@ test('create a CAS-2 application', async ({ page, person }) => {
   await completeAreaAndFundingSection(page, person.name)
   await completeAboutThePersonSection(page, person.name)
   await completeRisksAndNeedsSection(page, person.name)
-  await expect(page.getByText('You have completed 4 of 5 sections')).toBeVisible()
+  await completeOffenceAndLicenceInformationSection(page, person.name)
+  await expect(page.getByText('You have completed 5 of 6 sections')).toBeVisible()
 })
