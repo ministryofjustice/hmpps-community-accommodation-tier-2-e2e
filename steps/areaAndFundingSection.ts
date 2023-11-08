@@ -11,4 +11,13 @@ export const completeFundingInformationTask = async (page: Page, name: string) =
   )
   await fundingInformationPage.checkRadio('Personal money')
   await fundingInformationPage.clickSave()
+  await completeNationalInsurancePage(page, name)
+}
+
+async function completeNationalInsurancePage(page: Page, name: string) {
+  const willAnswerEqualityQuestionsPage = await ApplyPage.initialize(
+    page,
+    `What is ${name}'s National Insurance number? (Optional)`,
+  )
+  await willAnswerEqualityQuestionsPage.clickSave()
 }
