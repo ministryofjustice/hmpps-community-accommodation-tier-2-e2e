@@ -110,3 +110,20 @@ async function completeWillAnswerQuestionsPage(page: Page, name: string) {
   await willAnswerEqualityQuestionsPage.checkRadio('Yes')
   await willAnswerEqualityQuestionsPage.clickSave()
 }
+
+export const completeAddressHistoryTask = async (page: Page, name: string) => {
+  const taskListPage = new TaskListPage(page)
+  await taskListPage.clickTask('Add address history')
+
+  await completePreviousAddressPage(page, name)
+}
+
+async function completePreviousAddressPage(page: Page, name: string) {
+  const previousAddressPage = await ApplyPage.initialize(page, `Did ${name} have an address before entering custody?`)
+  await previousAddressPage.checkRadio('Yes')
+  await previousAddressPage.fillFieldByGroupAndLabel('What was the address?', 'Address line 1', '1 Example Road')
+  await previousAddressPage.fillFieldByGroupAndLabel('What was the address?', 'Town or city', 'Anytown')
+  await previousAddressPage.fillFieldByGroupAndLabel('What was the address?', 'Postcode', 'AB1 2CD')
+
+  await previousAddressPage.clickSave()
+}
