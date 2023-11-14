@@ -25,6 +25,10 @@ export class BasePage {
     await this.page.getByLabel(label).fill(value)
   }
 
+  async fillFieldByGroupAndLabel(group: string, label: string, value: string) {
+    await this.page.getByRole('group', { name: group }).getByLabel(label).fill(value)
+  }
+
   async checkRadio(label: string, beExact = false) {
     await this.page.getByLabel(label, { exact: beExact }).check()
   }
