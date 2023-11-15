@@ -103,10 +103,7 @@ async function completeDisabilityPage(page: Page, name: string) {
 }
 
 async function completeWillAnswerQuestionsPage(page: Page, name: string) {
-  const willAnswerEqualityQuestionsPage = await ApplyPage.initialize(
-    page,
-    `Does ${name} want to answer the equality questions?`,
-  )
+  const willAnswerEqualityQuestionsPage = await ApplyPage.initialize(page, `Equality questions for ${name}`)
   await willAnswerEqualityQuestionsPage.checkRadio('Yes')
   await willAnswerEqualityQuestionsPage.clickSave()
 }
