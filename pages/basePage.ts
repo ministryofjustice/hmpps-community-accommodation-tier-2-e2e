@@ -22,7 +22,7 @@ export class BasePage {
   }
 
   async fillField(label: string, value: string) {
-    await this.page.getByLabel(label).fill(value)
+    await this.page.getByLabel(label, { exact: true }).fill(value)
   }
 
   async fillFieldByGroupAndLabel(group: string, label: string, value: string) {
