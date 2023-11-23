@@ -6,13 +6,13 @@ import {
   completeBeforeYouStartSection,
   completeOffenceAndLicenceInformationSection,
   completeRisksAndNeedsSection,
-  enterCrn,
+  enterPrisonerNumber,
   startAnApplication,
 } from '../steps/apply'
 
 test('create a CAS-2 application', async ({ page, person }) => {
   await startAnApplication(page)
-  await enterCrn(page, person.crn)
+  await enterPrisonerNumber(page, person.nomsNumber)
   await completeBeforeYouStartSection(page, person.name)
   await completeAreaAndFundingSection(page, person.name)
   await completeAboutThePersonSection(page, person.name)
