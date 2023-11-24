@@ -8,7 +8,7 @@ import {
   completeRiskToSelfTask,
   completeRoshTask,
 } from './risksAndNeedsSection'
-import { completeFundingInformationTask } from './areaAndFundingSection'
+import { completeAreaInformationTask, completeFundingInformationTask } from './areaAndFundingSection'
 
 export const startAnApplication = async (page: Page) => {
   // Start page
@@ -38,6 +38,7 @@ export const completeBeforeYouStartSection = async (page: Page, name: string) =>
 }
 
 export const completeAreaAndFundingSection = async (page: Page, name: string) => {
+  await completeAreaInformationTask(page, name)
   await completeFundingInformationTask(page, name)
 }
 
