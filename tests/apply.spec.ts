@@ -6,6 +6,7 @@ import {
   completeBeforeYouStartSection,
   completeOffenceAndLicenceInformationSection,
   completeRisksAndNeedsSection,
+  confirmApplicant,
   enterPrisonerNumber,
   startAnApplication,
 } from '../steps/apply'
@@ -13,6 +14,7 @@ import {
 test('create a CAS-2 application', async ({ page, person }) => {
   await startAnApplication(page)
   await enterPrisonerNumber(page, person.nomsNumber)
+  await confirmApplicant(page)
   await completeBeforeYouStartSection(page, person.name)
   await completeAreaAndFundingSection(page, person.name)
   await completeAboutThePersonSection(page, person.name)

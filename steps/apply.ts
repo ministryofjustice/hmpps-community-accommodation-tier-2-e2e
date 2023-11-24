@@ -1,5 +1,6 @@
 import { Page } from '@playwright/test'
-import { ApplicationsDashboardPage, FindByPrisonNumberPage, StartPage } from '../pages/apply'
+
+import { ApplicationsDashboardPage, FindByPrisonNumberPage, StartPage, TaskListPage } from '../pages/apply'
 import { completeEligibilityTask } from './beforeYouStartSection'
 import { completeAddressHistoryTask, completeEqualityAndDiversityTask } from './aboutThePersonSection'
 import {
@@ -31,6 +32,11 @@ export const enterPrisonerNumber = async (page: Page, prisonNumber: string) => {
   const prisonNumberPage = new FindByPrisonNumberPage(page)
   await prisonNumberPage.enterPrisonNumber(prisonNumber)
   await prisonNumberPage.clickButton('Search for applicant')
+}
+
+export const confirmApplicant = async (page: Page) => {
+  const confirmApplicantPage = new TaskListPage(page)
+  confirmApplicantPage.clickButton('Confirm and continue')
 }
 
 export const completeBeforeYouStartSection = async (page: Page, name: string) => {
