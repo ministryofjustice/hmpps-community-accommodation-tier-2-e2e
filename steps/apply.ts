@@ -1,5 +1,5 @@
 import { Page } from '@playwright/test'
-import { ApplicationsDashboardPage, CRNPage, StartPage } from '../pages/apply'
+import { ApplicationsDashboardPage, FindByPrisonNumberPage, StartPage } from '../pages/apply'
 import { completeEligibilityTask } from './beforeYouStartSection'
 import { completeAddressHistoryTask, completeEqualityAndDiversityTask } from './aboutThePersonSection'
 import {
@@ -27,10 +27,10 @@ export const startAnApplication = async (page: Page) => {
   await applicationsDashboard.startNewApplication()
 }
 
-export const enterCrn = async (page: Page, crn: string) => {
-  const crnPage = new CRNPage(page)
-  await crnPage.enterCrn(crn)
-  await crnPage.clickSave()
+export const enterPrisonerNumber = async (page: Page, prisonNumber: string) => {
+  const prisonNumberPage = new FindByPrisonNumberPage(page)
+  await prisonNumberPage.enterPrisonNumber(prisonNumber)
+  await prisonNumberPage.clickButton('Search for applicant')
 }
 
 export const completeBeforeYouStartSection = async (page: Page, name: string) => {

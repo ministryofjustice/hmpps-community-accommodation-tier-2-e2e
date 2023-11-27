@@ -1,7 +1,7 @@
-import { CRNPage } from './crnPage'
+import { FindByPrisonNumberPage } from './findByPrisonNumberPage'
 import { TaskListPage } from './taskListPage'
 import { ApplyPage } from './applyPage'
 import { StartPage } from './startPage'
 import { ApplicationsDashboardPage } from './applicationsDashboardPage'
 
-export { CRNPage, TaskListPage, ApplyPage, StartPage, ApplicationsDashboardPage }
+export { FindByPrisonNumberPage, TaskListPage, ApplyPage, StartPage, ApplicationsDashboardPage }

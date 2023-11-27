@@ -51,6 +51,7 @@ export default defineConfig<TestOptions>({
         person: {
           name: 'Aadland Bertrand',
           crn: 'X320741',
+          nomsNumber: 'A1234AI',
         },
         user: {
           name: 'JIM SNOW',
