@@ -26,13 +26,20 @@ export const completeAreaInformationTask = async (page: Page, name: string) => {
   const taskListPage = new TaskListPage(page)
   await taskListPage.clickTask('Add exclusion zones and preferred areas')
 
+  await completeFirstAreaInformationPage(page, name)
+  await completeSecondAreaInformationPage(page, name)
+}
+
+async function completeFirstAreaInformationPage(page: Page, name: string) {
   const firstAreaInformationPage = await ApplyPage.initialize(page, `First preferred area for ${name}`)
 
   await firstAreaInformationPage.fillField('First preferred area', 'London')
   await firstAreaInformationPage.fillField('Reason for first preference', 'Family')
 
   await firstAreaInformationPage.clickSave()
+}
 
+async function completeSecondAreaInformationPage(page, name) {
   const secondAreaInformationPage = await ApplyPage.initialize(page, `Second preferred area for ${name}`)
 
   await secondAreaInformationPage.fillField('Second preferred area', 'Birmingham')
