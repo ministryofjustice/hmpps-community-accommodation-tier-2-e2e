@@ -28,6 +28,7 @@ export const completeAreaInformationTask = async (page: Page, name: string) => {
 
   await completeFirstAreaInformationPage(page, name)
   await completeSecondAreaInformationPage(page, name)
+  await completeExclusionZonesPage(page, name)
   await completeFamilyAccommodationPage(page, name)
 }
 
@@ -47,6 +48,15 @@ async function completeSecondAreaInformationPage(page, name) {
   await secondAreaInformationPage.fillField('Reason for second preference', 'Job')
 
   await secondAreaInformationPage.clickSave()
+}
+
+async function completeExclusionZonesPage(page, name) {
+  const exclusionZonesPage = await ApplyPage.initialize(page, `Exclusion zones for ${name}`)
+
+  await exclusionZonesPage.checkRadio('Yes')
+  await exclusionZonesPage.fillField('Provide details about the exclusion zone', 'Avoid Liverpool')
+
+  await exclusionZonesPage.clickSave()
 }
 
 async function completeFamilyAccommodationPage(page, name) {
