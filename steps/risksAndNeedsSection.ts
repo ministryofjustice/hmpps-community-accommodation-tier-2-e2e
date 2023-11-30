@@ -233,16 +233,3 @@ async function completeAdditionalRiskPage(page, name) {
   await riskManagementPage.checkRadio('No')
   await riskManagementPage.clickSave()
 }
-
-export const completeOffenceHistoryTask = async (page, name) => {
-  const taskListPage = new TaskListPage(page)
-  await taskListPage.clickTask('Add offending history')
-
-  await completeAnyPreviousConvictionsPage(page, name)
-}
-
-async function completeAnyPreviousConvictionsPage(page, name) {
-  const anyPreviousConvictionsPage = await ApplyPage.initialize(page, `Does ${name} have any previous convictions?`)
-  await anyPreviousConvictionsPage.checkRadio('No')
-  await anyPreviousConvictionsPage.clickSave()
-}

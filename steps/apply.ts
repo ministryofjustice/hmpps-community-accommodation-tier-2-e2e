@@ -3,13 +3,9 @@ import { Page } from '@playwright/test'
 import { ApplicationsDashboardPage, FindByPrisonNumberPage, StartPage, TaskListPage } from '../pages/apply'
 import { completeEligibilityTask } from './beforeYouStartSection'
 import { completeAddressHistoryTask, completeEqualityAndDiversityTask } from './aboutThePersonSection'
-import {
-  completeHealthNeedsTask,
-  completeOffenceHistoryTask,
-  completeRiskToSelfTask,
-  completeRoshTask,
-} from './risksAndNeedsSection'
+import { completeHealthNeedsTask, completeRiskToSelfTask, completeRoshTask } from './risksAndNeedsSection'
 import { completeAreaInformationTask, completeFundingInformationTask } from './areaAndFundingSection'
+import { completeCurrentOffencesTask, completeOffenceHistoryTask } from './offenceAndLicenceInformationSection'
 
 export const startAnApplication = async (page: Page) => {
   // Start page
@@ -60,5 +56,6 @@ export const completeRisksAndNeedsSection = async (page: Page, name: string) => 
 }
 
 export const completeOffenceAndLicenceInformationSection = async (page: Page, name: string) => {
+  await completeCurrentOffencesTask(page, name)
   await completeOffenceHistoryTask(page, name)
 }

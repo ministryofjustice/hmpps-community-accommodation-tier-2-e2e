@@ -61,4 +61,8 @@ export class BasePage {
     await this.page.getByRole('group', { name: group }).getByLabel('Month').fill(date.month)
     await this.page.getByRole('group', { name: group }).getByLabel('Year').fill(date.year)
   }
+
+  async chooseSelectItem(label: string, option: string) {
+    await this.page.getByLabel(label).selectOption({ label: option })
+  }
 }
