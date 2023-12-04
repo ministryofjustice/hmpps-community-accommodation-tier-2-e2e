@@ -40,3 +40,45 @@ async function completeAnyPreviousConvictionsPage(page, name) {
   await anyPreviousConvictionsPage.checkRadio('No')
   await anyPreviousConvictionsPage.clickSave()
 }
+
+export const completeHDCLicenceAndCPPDetailsTask = async (page, name) => {
+  const taskListPage = new TaskListPage(page)
+  await taskListPage.clickTask('Add HDC licence and CPP details')
+
+  await completeHDCLicenceDatesPage(page, name)
+  await completeCPPDetailsPage(page, name)
+  await completeNonStandardLicenceConditionsPage(page, name)
+}
+
+async function completeHDCLicenceDatesPage(page, name) {
+  const hdcLicenceDatesPage = await ApplyPage.initialize(page, `${name}'s Home Detention Curfew (HDC) licence dates`)
+  await hdcLicenceDatesPage.fillDateFieldInGroup(`What is ${name}'s HDC eligibility date?`, {
+    year: '2022',
+    month: '3',
+    day: '1',
+  })
+  await hdcLicenceDatesPage.fillDateFieldInGroup(`What is ${name}'s conditional release date?`, {
+    year: '2023',
+    month: '3',
+    day: '1',
+  })
+  await hdcLicenceDatesPage.clickSave()
+}
+
+async function completeCPPDetailsPage(page, name) {
+  const cppDetailsPage = await ApplyPage.initialize(page, `Who is ${name}'s Community Probation Practitioner (CPP)?`)
+  await cppDetailsPage.fillField('Full name', 'A. CPP')
+  await cppDetailsPage.fillField('Probation region', 'south')
+  await cppDetailsPage.fillField('Contact email address', 'an@email.gov.uk')
+  await cppDetailsPage.fillField('Contact number', '12345')
+  await cppDetailsPage.clickSave()
+}
+
+async function completeNonStandardLicenceConditionsPage(page, name) {
+  const nonStandardLicenceConditionsPage = await ApplyPage.initialize(
+    page,
+    `Does ${name} have any non-standard licence conditions?`,
+  )
+  await nonStandardLicenceConditionsPage.checkRadio("I don't know")
+  await nonStandardLicenceConditionsPage.clickSave()
+}
