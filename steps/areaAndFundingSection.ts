@@ -29,6 +29,7 @@ export const completeAreaInformationTask = async (page: Page, name: string) => {
   await completeFirstAreaInformationPage(page, name)
   await completeSecondAreaInformationPage(page, name)
   await completeExclusionZonesPage(page, name)
+  await completeGangAffiliations(page, name)
   await completeFamilyAccommodationPage(page, name)
 }
 
@@ -55,6 +56,20 @@ async function completeExclusionZonesPage(page, name) {
 
   await exclusionZonesPage.checkRadio('Yes')
   await exclusionZonesPage.fillField('Provide details about the exclusion zone', 'Avoid Liverpool')
+
+  await exclusionZonesPage.clickSave()
+}
+
+async function completeGangAffiliations(page, name) {
+  const exclusionZonesPage = await ApplyPage.initialize(page, `Does ${name} have any gang affiliations?`)
+
+  await exclusionZonesPage.checkRadio('Yes')
+  await exclusionZonesPage.fillField('What is the name of the gang?', 'Gang name')
+  await exclusionZonesPage.fillField('Where do they operate?', 'Derby')
+  await exclusionZonesPage.fillField(
+    'Name any known rival gangs and where they operate (optional)',
+    'Rival gang detail',
+  )
 
   await exclusionZonesPage.clickSave()
 }
