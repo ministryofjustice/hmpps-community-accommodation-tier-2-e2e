@@ -1,7 +1,7 @@
 import { Page } from '@playwright/test'
 
 import { ApplicationsDashboardPage, FindByPrisonNumberPage, StartPage, TaskListPage } from '../pages/apply'
-import { completeEligibilityTask } from './beforeYouStartSection'
+import { completeConsentTask, completeEligibilityTask } from './beforeYouStartSection'
 import { completeAddressHistoryTask, completeEqualityAndDiversityTask } from './aboutThePersonSection'
 import { completeHealthNeedsTask, completeRiskToSelfTask, completeRoshTask } from './risksAndNeedsSection'
 import { completeAreaInformationTask, completeFundingInformationTask } from './areaAndFundingSection'
@@ -41,6 +41,7 @@ export const confirmApplicant = async (page: Page) => {
 
 export const completeBeforeYouStartSection = async (page: Page, name: string) => {
   await completeEligibilityTask(page, name)
+  await completeConsentTask(page, name)
 }
 
 export const completeAreaAndFundingSection = async (page: Page, name: string) => {
