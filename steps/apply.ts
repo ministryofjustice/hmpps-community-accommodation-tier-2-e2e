@@ -2,7 +2,11 @@ import { Page } from '@playwright/test'
 
 import { ApplicationsDashboardPage, FindByPrisonNumberPage, StartPage, TaskListPage } from '../pages/apply'
 import { completeConsentTask, completeEligibilityTask } from './beforeYouStartSection'
-import { completeAddressHistoryTask, completeEqualityAndDiversityTask } from './aboutThePersonSection'
+import {
+  completeAddressHistoryTask,
+  completeEqualityAndDiversityTask,
+  completePersonalInformationTask,
+} from './aboutThePersonSection'
 import { completeHealthNeedsTask, completeRiskToSelfTask, completeRoshTask } from './risksAndNeedsSection'
 import { completeAreaInformationTask, completeFundingInformationTask } from './areaAndFundingSection'
 import {
@@ -50,6 +54,7 @@ export const completeAreaAndFundingSection = async (page: Page, name: string) =>
 }
 
 export const completeAboutThePersonSection = async (page: Page, name: string) => {
+  await completePersonalInformationTask(page, name)
   await completeEqualityAndDiversityTask(page, name)
   await completeAddressHistoryTask(page, name)
 }
