@@ -33,6 +33,10 @@ export class BasePage {
     await this.page.getByLabel(label, { exact: beExact }).check()
   }
 
+  async checkRadioByTestId(testId: string) {
+    await this.page.getByTestId(testId).check()
+  }
+
   async checkRadioInGroup(group: string, label: string) {
     await this.page
       .getByRole('group', {
@@ -60,6 +64,10 @@ export class BasePage {
     await this.page.getByRole('group', { name: group }).getByLabel('Day').fill(date.day)
     await this.page.getByRole('group', { name: group }).getByLabel('Month').fill(date.month)
     await this.page.getByRole('group', { name: group }).getByLabel('Year').fill(date.year)
+  }
+
+  async chooseSelectItemByTestId(testId: string, option: string) {
+    await this.page.getByTestId(testId).selectOption({ label: option })
   }
 
   async chooseSelectItem(label: string, option: string) {
