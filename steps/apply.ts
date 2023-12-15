@@ -10,6 +10,7 @@ import {
   completeHDCLicenceAndCPPDetailsTask,
   completeOffenceHistoryTask,
 } from './offenceAndLicenceInformationSection'
+import { completeCheckAnswersTask } from './checkAnswersSection'
 
 export const startAnApplication = async (page: Page) => {
   // Start page
@@ -64,4 +65,8 @@ export const completeOffenceAndLicenceInformationSection = async (page: Page, na
   await completeCurrentOffencesTask(page, name)
   await completeOffenceHistoryTask(page, name)
   await completeHDCLicenceAndCPPDetailsTask(page, name)
+}
+
+export const completeCheckAnswersSection = async (page: Page) => {
+  await completeCheckAnswersTask(page)
 }
