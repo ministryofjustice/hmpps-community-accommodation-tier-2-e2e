@@ -124,3 +124,30 @@ async function completePreviousAddressPage(page: Page, name: string) {
 
   await previousAddressPage.clickSave()
 }
+
+export const completePersonalInformationTask = async (page: Page, name: string) => {
+  const taskListPage = new TaskListPage(page)
+  await taskListPage.clickTask('Add personal information')
+
+  await completeWorkingMobilePhonePage(page, name)
+  await completeImmigrationStatusPage(page, name)
+}
+
+async function completeWorkingMobilePhonePage(page: Page, name: string) {
+  const pageTitle = `Will ${name} have a working mobile phone when they are released?`
+  const workingMobilePhonePage = await ApplyPage.initialize(page, pageTitle)
+
+  await workingMobilePhonePage.checkRadioByTestId('hasWorkingMobilePhone-yes')
+  await workingMobilePhonePage.fillField('What is their mobile number? (Optional)', '11111111111')
+  await workingMobilePhonePage.checkRadioByTestId('isSmartPhone-yes')
+
+  await workingMobilePhonePage.clickSave()
+}
+
+async function completeImmigrationStatusPage(page: Page, name: string) {
+  const immigrationStatusPage = await ApplyPage.initialize(page, `What is ${name}'s immigration status?`)
+
+  await immigrationStatusPage.chooseSelectItemByTestId('immigrationStatus', 'UK citizen')
+
+  await immigrationStatusPage.clickSave()
+}
