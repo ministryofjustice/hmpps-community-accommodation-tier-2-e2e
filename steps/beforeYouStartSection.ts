@@ -1,5 +1,5 @@
 import { Page } from '@playwright/test'
-import { ApplyPage } from '../pages/apply'
+import { ApplyPage, TaskListPage } from '../pages/apply'
 
 export const completeEligibilityTask = async (page: Page, name: string) => {
   const confirmEligibilityPage = await ApplyPage.initialize(
@@ -24,4 +24,35 @@ export const completeConsentTask = async (page: Page, name: string) => {
     day: '1',
   })
   await confirmConsentPage.clickSave()
+}
+
+export const completeReferrerDetailsTask = async (page: Page) => {
+  const taskListPage = new TaskListPage(page)
+  await taskListPage.clickTask('Add your details')
+
+  await completeConfirmDetailsPage(page)
+  await completeJobTitlePage(page)
+  await completeContactNumberPage(page)
+}
+
+async function completeConfirmDetailsPage(page: Page) {
+  const confirmDetailsPage = await ApplyPage.initialize(page, `Confirm your details`)
+
+  await confirmDetailsPage.clickSave()
+}
+
+async function completeJobTitlePage(page: Page) {
+  const jobTitlePage = await ApplyPage.initialize(page, `What is your job title?`)
+
+  await jobTitlePage.fillField('What is your job title?', 'POM')
+
+  await jobTitlePage.clickSave()
+}
+
+async function completeContactNumberPage(page: Page) {
+  const confirmDetailsPage = await ApplyPage.initialize(page, `What is your contact telephone number?`)
+
+  await confirmDetailsPage.fillField('What is your contact telephone number?', '12345')
+
+  await confirmDetailsPage.clickSave()
 }
