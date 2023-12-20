@@ -104,7 +104,7 @@ async function completeOtherHealthPage(page: Page, name) {
 
 export const completeRiskToSelfTask = async (page: Page, name: string) => {
   const taskListPage = new TaskListPage(page)
-  await taskListPage.clickTask('Review risk to self information')
+  await taskListPage.clickTask('Add risk to self information')
 
   await reviewOasysImportPage(page, name)
   await completeVulnerabilityPage(page, name)
@@ -173,7 +173,7 @@ async function completeAdditionalInformationPage(page) {
 
 export const completeRoshTask = async (page: Page, name: string) => {
   const taskListPage = new TaskListPage(page)
-  await taskListPage.clickTask('Review risk of serious harm (RoSH) information')
+  await taskListPage.clickTask('Add risk of serious harm (RoSH) information')
 
   await reviewRoshOasysImportPage(page, name)
   await completeRoshSummaryPage(page, name)
