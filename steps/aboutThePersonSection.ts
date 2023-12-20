@@ -3,7 +3,7 @@ import { ApplyPage, TaskListPage } from '../pages/apply'
 
 export const completeEqualityAndDiversityTask = async (page: Page, name: string) => {
   const taskListPage = new TaskListPage(page)
-  await taskListPage.clickTask('Complete equality and diversity monitoring')
+  await taskListPage.clickTask('Add equality and diversity monitoring information')
 
   await completeWillAnswerQuestionsPage(page, name)
 

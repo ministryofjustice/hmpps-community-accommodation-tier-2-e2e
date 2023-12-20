@@ -3,7 +3,7 @@ import { ApplyPage, TaskListPage } from '../pages/apply'
 
 export const completeFundingInformationTask = async (page: Page, name: string) => {
   const taskListPage = new TaskListPage(page)
-  await taskListPage.clickTask('Add funding information')
+  await taskListPage.clickTask('Confirm funding and ID')
 
   const fundingInformationPage = await ApplyPage.initialize(
     page,
