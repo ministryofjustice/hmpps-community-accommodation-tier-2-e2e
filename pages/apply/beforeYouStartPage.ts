@@ -1,10 +1,6 @@
 import { BasePage } from '../basePage'
 
-export class StartPage extends BasePage {
-  async goto() {
-    await this.page.goto('/')
-  }
-
+export class BeforeYouStartPage extends BasePage {
   async startNow() {
     await this.page.getByRole('button', { name: 'Start now' }).click()
   }
