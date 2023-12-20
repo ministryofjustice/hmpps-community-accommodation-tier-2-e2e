@@ -1,6 +1,12 @@
 import { Page } from '@playwright/test'
 
-import { ApplicationsDashboardPage, FindByPrisonNumberPage, StartPage, TaskListPage } from '../pages/apply'
+import {
+  ApplicationsDashboardPage,
+  BeforeYouStartPage,
+  DashboardPage,
+  FindByPrisonNumberPage,
+  TaskListPage,
+} from '../pages/apply'
 import { completeConsentTask, completeEligibilityTask, completeReferrerDetailsTask } from './beforeYouStartSection'
 import {
   completeAddressHistoryTask,
@@ -20,11 +26,15 @@ export const startAnApplication = async (page: Page) => {
   // Start page
   // --------
   // visit the root url
-  const startPage = new StartPage(page)
-  await startPage.goto()
+  const dashboardPage = new DashboardPage(page)
+  await dashboardPage.goto()
+
+  // Follow link to 'new referral'
+  await dashboardPage.makeNewReferral()
 
   // // confirm that I'm ready to start
-  await startPage.startNow()
+  const beforeYouStartPage = new BeforeYouStartPage(page)
+  await beforeYouStartPage.startNow()
 
   // Applications dashboard
   // -----------------
