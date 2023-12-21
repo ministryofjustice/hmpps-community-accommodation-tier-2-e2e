@@ -7,7 +7,12 @@ import {
   FindByPrisonNumberPage,
   TaskListPage,
 } from '../pages/apply'
-import { completeConsentTask, completeEligibilityTask, completeReferrerDetailsTask } from './beforeYouStartSection'
+import {
+  completeConsentTask,
+  completeEligibilityTask,
+  completeInformationNeededTask,
+  completeReferrerDetailsTask,
+} from './beforeYouStartSection'
 import {
   completeAddressHistoryTask,
   completeEqualityAndDiversityTask,
@@ -58,6 +63,7 @@ export const completeBeforeYouStartSection = async (page: Page, name: string) =>
   await completeEligibilityTask(page, name)
   await completeConsentTask(page, name)
   await completeReferrerDetailsTask(page)
+  await completeInformationNeededTask(page, name)
 }
 
 export const completeAreaAndFundingSection = async (page: Page, name: string) => {

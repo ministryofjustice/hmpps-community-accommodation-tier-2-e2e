@@ -56,3 +56,13 @@ async function completeContactNumberPage(page: Page) {
 
   await confirmDetailsPage.clickSave()
 }
+
+export const completeInformationNeededTask = async (page: Page, name: string) => {
+  const taskListPage = new TaskListPage(page)
+  await taskListPage.clickTask('Check information needed from the applicant')
+
+  const checkInformationNeededPage = await ApplyPage.initialize(page, `Check information needed from ${name}`)
+
+  await checkInformationNeededPage.checkRadio(`Yes`)
+  await checkInformationNeededPage.clickSave()
+}
