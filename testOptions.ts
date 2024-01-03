@@ -9,4 +9,9 @@ export type TestOptions = {
     username: string
     password: string
   }
+  adminUser: {
+    name: string
+    username: string
+    password: string
+  }
 }

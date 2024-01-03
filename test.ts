@@ -19,4 +19,12 @@ export const test = base.extend<TestOptions>({
     },
     { option: true },
   ],
+  adminUser: [
+    {
+      name: 'CAS2 admin',
+      username: process.env.ADMIN_USERNAME as string,
+      password: process.env.ADMIN_PASSWORD as string,
+    },
+    { option: true },
+  ],
 })
