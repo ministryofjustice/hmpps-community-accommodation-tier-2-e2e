@@ -22,5 +22,5 @@ test('create a CAS-2 application', async ({ page, person }) => {
   await completeRisksAndNeedsSection(page, person.name)
   await completeOffenceAndLicenceInformationSection(page, person.name)
   await completeCheckAnswersSection(page)
-  await expect(page.getByText('You have completed 15 of 15 tasks')).toBeVisible()
+  await expect(page.getByText('You have completed 15 of 16 tasks')).toBeVisible()
 })
