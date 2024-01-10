@@ -1,4 +1,4 @@
-import { Page } from '@playwright/test'
+import { Page, expect } from '@playwright/test'
 
 import {
   ApplicationsDashboardPage,
@@ -91,4 +91,9 @@ export const completeOffenceAndLicenceInformationSection = async (page: Page, na
 
 export const completeCheckAnswersSection = async (page: Page) => {
   await completeCheckAnswersTask(page)
+}
+
+export const submitApplication = async (page: Page) => {
+  await page.getByRole('button', { name: 'Submit application' }).click()
+  await expect(page.locator('h1')).toContainText('Application complete')
 }
