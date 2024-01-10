@@ -27,4 +27,12 @@ export const test = base.extend<TestOptions>({
     },
     { option: true },
   ],
+  assessorUser: [
+    {
+      name: 'CAS2 assessor',
+      username: process.env.ASSESSOR_USERNAME as string,
+      password: process.env.ASSESSOR_PASSWORD as string,
+    },
+    { option: true },
+  ],
 })

@@ -14,4 +14,9 @@ export type TestOptions = {
     username: string
     password: string
   }
+  assessorUser: {
+    name: string
+    username: string
+    password: string
+  }
 }
