@@ -1,4 +1,4 @@
-import { Page } from '@playwright/test'
+import { Page, expect } from '@playwright/test'
 
 import {
   ApplicationsDashboardPage,
@@ -7,7 +7,12 @@ import {
   FindByPrisonNumberPage,
   TaskListPage,
 } from '../pages/apply'
-import { completeConsentTask, completeEligibilityTask, completeReferrerDetailsTask } from './beforeYouStartSection'
+import {
+  completeCheckInformationTask,
+  completeConsentTask,
+  completeEligibilityTask,
+  completeReferrerDetailsTask,
+} from './beforeYouStartSection'
 import {
   completeAddressHistoryTask,
   completeEqualityAndDiversityTask,
@@ -58,6 +63,7 @@ export const completeBeforeYouStartSection = async (page: Page, name: string) =>
   await completeEligibilityTask(page, name)
   await completeConsentTask(page, name)
   await completeReferrerDetailsTask(page)
+  await completeCheckInformationTask(page)
 }
 
 export const completeAreaAndFundingSection = async (page: Page, name: string) => {
@@ -85,4 +91,9 @@ export const completeOffenceAndLicenceInformationSection = async (page: Page, na
 
 export const completeCheckAnswersSection = async (page: Page) => {
   await completeCheckAnswersTask(page)
+}
+
+export const submitApplication = async (page: Page) => {
+  await page.getByRole('button', { name: 'Submit application' }).click()
+  await expect(page.locator('h1')).toContainText('Application complete')
 }
