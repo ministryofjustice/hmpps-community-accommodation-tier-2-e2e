@@ -20,12 +20,19 @@ npm install
 npm run install-playwright
 ```
 
-Add a `.env` file to the root of the project with the following variables (ask a developer on your team to share the e2e credentials):
+Add a `.env` file to the root of the project with the following variables:
 
 ```text
 HMPPS_AUTH_USERNAME= # A valid HMPPS Auth Username
 HMPPS_AUTH_PASSWORD= # A valid HMPPS Auth Password
+ADMIN_USERNAME= # A valid HMPPS Auth Username for a user wil role CAS2_ADMIN
+ADMIN_PASSWORD= # A valid HMPPS Auth Password for a user wil role CAS2_ADMIN
+ASSESSOR_USERNAME= # A valid HMPPS Auth Username for a user wil role CAS2_ASSESSOR
+ASSESSOR_PASSWORD= # A valid HMPPS Auth Password for a user wil role CAS2_ASSESSOR
 ```
+
+When running locally, these can be found in the `playwright.config.ts` file.
+For remote environments, ask a developer on your team to share the test credentials (currently stored in the HMPPS 1Password Vault).
 
 ## Running the tests
 

@@ -40,6 +40,16 @@ export default defineConfig<TestOptions>({
           username: 'POM_USER',
           password: 'password123456',
         },
+        adminUser: {
+          name: 'CAS2 Admin',
+          username: 'CAS2_ADMIN_USER',
+          password: 'password123456',
+        },
+        assessorUser: {
+          name: 'CAS2 Assessor',
+          username: 'CAS2_ASSESSOR_USER',
+          password: 'password123456',
+        },
       },
     },
     {
@@ -57,6 +67,16 @@ export default defineConfig<TestOptions>({
           name: 'JIM SNOW',
           username: 'jimsnowldap',
           password: 'secret',
+        },
+        adminUser: {
+          name: 'CAS2 Admin',
+          username: 'CAS2_ADMIN_USER',
+          password: 'password123456',
+        },
+        assessorUser: {
+          name: 'CAS2 Assessor',
+          username: 'CAS2_ASSESSOR_USER',
+          password: 'password123456',
         },
       },
       dependencies: ['setupLocal'],
