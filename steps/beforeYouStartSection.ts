@@ -28,7 +28,7 @@ export const completeConsentTask = async (page: Page, name: string) => {
 
 export const completeReferrerDetailsTask = async (page: Page) => {
   const taskListPage = new TaskListPage(page)
-  await taskListPage.clickTask('Add your details')
+  await taskListPage.clickTask('Add referrer details')
 
   await completeConfirmDetailsPage(page)
   await completeJobTitlePage(page)
