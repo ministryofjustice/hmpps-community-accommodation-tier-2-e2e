@@ -26,6 +26,7 @@ async function completeSubstanceMisusePage(page: Page, name) {
   await substanceMisusePage.checkRadioInGroup('take any illegal substances', 'No')
   await substanceMisusePage.checkRadioInGroup('drug and alcohol service', 'No')
   await substanceMisusePage.checkRadioInGroup('substitute medication', 'No')
+  await substanceMisusePage.checkRadioInGroup('naloxone', 'No')
 
   await substanceMisusePage.clickSave()
 }
