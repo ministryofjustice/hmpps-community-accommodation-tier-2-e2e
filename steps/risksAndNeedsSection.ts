@@ -50,6 +50,7 @@ async function completeMentalHealthPage(page: Page, name) {
 
   await mentalHealthPage.checkRadioInGroup('any mental health needs', 'No')
   await mentalHealthPage.checkRadioInGroup('community mental health services', 'No')
+  await mentalHealthPage.checkRadioInGroup('mental health services in custody', 'No')
 
   // we can't use the normal checkRadioInGroup() helper due to follow-on yes/no radios
   // triggering Error: strict mode violation
