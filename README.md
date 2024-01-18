@@ -23,12 +23,12 @@ npm run install-playwright
 Add a `.env` file to the root of the project with the following variables:
 
 ```text
-HMPPS_AUTH_USERNAME= # A valid HMPPS Auth Username
-HMPPS_AUTH_PASSWORD= # A valid HMPPS Auth Password
-ADMIN_USERNAME= # A valid HMPPS Auth Username for a user wil role CAS2_ADMIN
-ADMIN_PASSWORD= # A valid HMPPS Auth Password for a user wil role CAS2_ADMIN
-ASSESSOR_USERNAME= # A valid HMPPS Auth Username for a user wil role CAS2_ASSESSOR
-ASSESSOR_PASSWORD= # A valid HMPPS Auth Password for a user wil role CAS2_ASSESSOR
+CAS2_HMPPS_AUTH_USERNAME= # A valid HMPPS Auth Username
+CAS2_HMPPS_AUTH_PASSWORD= # A valid HMPPS Auth Password
+CAS2_ADMIN_USERNAME= # A valid HMPPS Auth Username for a user wil role CAS2_ADMIN
+CAS2_ADMIN_PASSWORD= # A valid HMPPS Auth Password for a user wil role CAS2_ADMIN
+CAS2_ASSESSOR_USERNAME= # A valid HMPPS Auth Username for a user wil role CAS2_ASSESSOR
+CAS2_ASSESSOR_PASSWORD= # A valid HMPPS Auth Password for a user wil role CAS2_ASSESSOR
 ```
 
 When running locally, these can be found in the `playwright.config.ts` file.

@@ -14,24 +14,24 @@ export const test = base.extend<TestOptions>({
   user: [
     {
       name: 'Approved Premises E2ETester',
-      username: process.env.HMPPS_AUTH_USERNAME as string,
-      password: process.env.HMPPS_AUTH_PASSWORD as string,
+      username: process.env.CAS2_HMPPS_AUTH_USERNAME as string,
+      password: process.env.CAS2_HMPPS_AUTH_PASSWORD as string,
     },
     { option: true },
   ],
   adminUser: [
     {
       name: 'CAS2 admin',
-      username: process.env.ADMIN_USERNAME as string,
-      password: process.env.ADMIN_PASSWORD as string,
+      username: process.env.CAS2_ADMIN_USERNAME as string,
+      password: process.env.CAS2_ADMIN_PASSWORD as string,
     },
     { option: true },
   ],
   assessorUser: [
     {
       name: 'CAS2 assessor',
-      username: process.env.ASSESSOR_USERNAME as string,
-      password: process.env.ASSESSOR_PASSWORD as string,
+      username: process.env.CAS2_ASSESSOR_USERNAME as string,
+      password: process.env.CAS2_ASSESSOR_PASSWORD as string,
     },
     { option: true },
   ],
