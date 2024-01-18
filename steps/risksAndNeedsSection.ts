@@ -24,7 +24,8 @@ async function completeSubstanceMisusePage(page: Page, name) {
   const substanceMisusePage = await ApplyPage.initialize(page, `Substance misuse needs for ${name}`)
 
   await substanceMisusePage.checkRadioInGroup('take any illegal substances', 'No')
-  await substanceMisusePage.checkRadioInGroup('drug and alcohol service', 'No')
+  await substanceMisusePage.checkRadioInGroup('drug and alcohol service in custody', 'No')
+  await substanceMisusePage.checkRadioInGroup('drug and alcohol service when they are released', 'No')
   await substanceMisusePage.checkRadioInGroup('substitute medication', 'No')
   await substanceMisusePage.checkRadioInGroup('naloxone', 'No')
 
